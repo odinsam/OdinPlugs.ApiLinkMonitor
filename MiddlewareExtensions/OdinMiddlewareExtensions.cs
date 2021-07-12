@@ -1,16 +1,15 @@
 using Microsoft.AspNetCore.Builder;
-using OdinPlugs.OdinMiddleware;
 
-namespace OdinPlugs.OdinMvcCore.OdinMiddleware.MiddlewareExtensions
+namespace OdinPlugs.ApiLinkMonitor.OdinMiddleware.MiddlewareExtensions
 {
     /// <summary>
     /// 扩展中间件
     /// </summary>
     public static class OdinAopMiddlewareExtensions
     {
-        public static IApplicationBuilder UseOdinAop(this IApplicationBuilder app)
+        public static IApplicationBuilder UseOdinApiLinkMonitor(this IApplicationBuilder app)
         {
-            return app.UseMiddleware<OdinAopMiddleware>();
+            return app.UseMiddleware<OdinApiLinkMonitorMiddleware>();
         }
 
         public static IApplicationBuilder UseOdinException(this IApplicationBuilder app)

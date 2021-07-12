@@ -17,6 +17,15 @@
         <PackageTags>$(OdinPackageTags)</PackageTags>
         </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="OdinPlugs.Utils" Version="1.0.0"/>
+        <PackageReference Include="AspectCore.Core" Version="2.2.0" />
+        <PackageReference Include="AspectCore.Extensions.DependencyInjection" Version="2.2.0" />
+        <PackageReference Include="AspectCore.Extensions.Autofac" Version="2.2.0" />
+        <PackageReference Include="AspectCore.Extensions.Hosting" Version="2.2.0" />
+        <PackageReference Include="AspectCore.Extensions.AspNetCore" Version="2.2.0" />
+    </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\OdinPlugs.OdinInject\OdinPlugs.OdinInject.csproj" />
+        <ProjectReference Include="..\OdinPlugs.Utils\OdinPlugs.OdinUtils.csproj" />
+        <ProjectReference Include="..\OdinPlugs.SnowFlake\OdinPlugs.SnowFlake.csproj" />
     </ItemGroup>
 </Project>
