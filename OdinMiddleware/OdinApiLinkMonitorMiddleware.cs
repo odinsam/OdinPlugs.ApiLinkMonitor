@@ -22,23 +22,40 @@ namespace OdinPlugs.ApiLinkMonitor.OdinMiddleware
         }
         /// <summary>
         /// 自定义中间件要执行的逻辑
-        /// </summary>
-        /// <param name="context"></param>
+        /// </summary>w
+        /// <param name="context"></param> 
         /// <returns></returns>
         public async Task Invoke(HttpContext context)
         {
             Exception exception = null;
             try
             {
+                // System.Console.WriteLine("=========OdinApiLinkMonitorMiddleware Request  start==========");
+                // context.Request.EnableBuffering();
+                // var requestReader = new StreamReader(context.Request.Body);
+                // var requestContent = requestReader.ReadToEnd();
+                // Console.WriteLine($"Request Body: {requestContent}");
+                // context.Request.Body.Position = 0;
+                // using (var ms = new MemoryStream())
+                // {
+                //     context.Response.Body = ms;
+                //     OdinAopMiddlewareHelper.MiddlewareBefore(context);
+                //     System.Console.WriteLine("=========OdinApiLinkMonitorMiddleware Request  end==========");
+                //     await _next(context);
+                //     ms.Position = 0;
+                //     var responseReader = new StreamReader(ms);
+                //     var responseContent = responseReader.ReadToEnd();
+                //     Console.WriteLine($"Response Body: {responseContent}");
+                //     ms.Position = 0;
+                //     context.Request.Body.Position = 0;
+                // }
                 System.Console.WriteLine("=========OdinApiLinkMonitorMiddleware Request  start==========");
-                context.Request.EnableBuffering();
-                var requestReader = new StreamReader(context.Request.Body);
-                var requestContent = requestReader.ReadToEnd();
                 OdinAopMiddlewareHelper.MiddlewareBefore(context);
                 System.Console.WriteLine("=========OdinApiLinkMonitorMiddleware Request  end==========");
                 await _next(context);
-                var responseReader = new StreamReader(context.Response.Body);
-                var responseContent = responseReader.ReadToEnd();
+                System.Console.WriteLine("=========OdinApiLinkMonitorMiddleware Response  start==========");
+                OdinAopMiddlewareHelper.MiddlewareBefore(context);
+                System.Console.WriteLine("=========OdinApiLinkMonitorMiddleware Response  end==========");
             }
             catch (System.Exception ex)
             {

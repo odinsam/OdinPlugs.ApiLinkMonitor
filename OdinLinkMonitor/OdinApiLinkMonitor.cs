@@ -3,12 +3,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Text;
 using AspectCore.DynamicProxy;
-using DotNetCore.CAP.Filter;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc.Filters;
-using Microsoft.VisualBasic.CompilerServices;
 using Newtonsoft.Json;
 using OdinPlugs.ApiLinkMonitor.Models.ApiLinkModels;
 using OdinPlugs.ApiLinkMonitor.Models.EnumLink;
@@ -148,10 +144,10 @@ namespace OdinPlugs.ApiLinkMonitor.OdinLinkMonitor
                         InvokerClassName = context.ServiceMethod.DeclaringType?.Name,
                         InvokerMethodName = context.ServiceMethod.Name,
                         InvokerMethodParams = context.ServiceMethod.GetParameters().Length > 0
-                                                ?
-                                                JsonConvert.SerializeObject(context.ServiceMethod.GetParameters().Select(p => p.Name).ToList())
-                                                :
-                                                null,
+                                    ?
+                                    JsonConvert.SerializeObject(context.ServiceMethod.GetParameters().Select(p => p.Name).ToList())
+                                    :
+                                    null,
                         LinkSort = stackTopele.LinkSort + 1,
                     };
                     stackLink.Push(linkModel);
@@ -183,8 +179,6 @@ namespace OdinPlugs.ApiLinkMonitor.OdinLinkMonitor
         {
             try
             {
-                var responseReader = new StreamReader(context.Response.Body);
-                var result = responseReader.ReadToEnd();
                 var odinlinkId = Convert.ToInt64(context.Items["odinlinkId"]);
                 var linksDic = context.Items["odinlink"] as Dictionary<long, Stack<OdinApiLinkModel>>;
                 if (linksDic != null && linksDic.ContainsKey(odinlinkId) && linksDic[odinlinkId].Count > 0)
@@ -203,7 +197,7 @@ namespace OdinPlugs.ApiLinkMonitor.OdinLinkMonitor
                         LinkPrevious = stackTopele.LinkNext,
                         InvokerReturnStatusEnum = invokerReturnStatusenum,
                         InvokerReturnStatusStr = invokerReturnStatusenum.ToString(),
-                        InvokerResult = result,
+                        InvokerResult = "result",
                         ElapsedTime = elapsedTime,
                         InvokerMethodParams = JsonConvert.SerializeObject(OdinRequestParamasHelper.GetRequestParams(context)),
                         LinkSort = stackTopele.LinkSort + 1,
