@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 using OdinPlugs.OdinMvcCore.OdinMiddleware.Utils;
 
-namespace OdinPlugs.OdinMvcCore.OdinMiddleware
+namespace OdinPlugs.ApiLinkMonitor.OdinMiddleware
 {
     public class OdinExceptionMiddleware
     {
