@@ -26,6 +26,6 @@
     <ItemGroup>
         <ProjectReference Include="..\OdinPlugs.OdinInject\OdinPlugs.OdinInject.csproj" />
         <ProjectReference Include="..\OdinPlugs.SnowFlake\OdinPlugs.SnowFlake.csproj" />
-        <ProjectReference Include="..\OdinPlugs.OdinUtils\OdinPlugs.OdinUtils.csproj" />
+        <ProjectReference Include="..\OdinPlugs.Utils\OdinPlugs.OdinUtils.csproj" />
     </ItemGroup>
 </Project>
