@@ -1,3 +1,4 @@
+using System;
 using System.Diagnostics;
 using System.Security.AccessControl;
 using System.Text.Json.Serialization;
@@ -49,12 +50,6 @@ namespace OdinPlugs.ApiLinkMonitor.Models.ApiLinkModels
         public string InvokerReturnStatusStr { get; set; }
 
         /// <summary>
-        /// 调用返回结果
-        /// </summary>
-        /// <value></value>
-        public string InvokerResult { get; set; }
-
-        /// <summary>
         /// 下层链路
         /// </summary>
         /// <value></value>
@@ -80,7 +75,6 @@ namespace OdinPlugs.ApiLinkMonitor.Models.ApiLinkModels
         /// </summary>
         /// <value></value>
         public string InvokerMethodName { get; set; }
-        public string InvokerMethodParams { get; set; }
 
         /// <summary>
         /// 链路序列

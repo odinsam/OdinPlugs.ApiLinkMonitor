@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Builder;
 
 namespace OdinPlugs.ApiLinkMonitor.OdinMiddleware.MiddlewareExtensions
@@ -7,9 +9,12 @@ namespace OdinPlugs.ApiLinkMonitor.OdinMiddleware.MiddlewareExtensions
     /// </summary>
     public static class OdinAopMiddlewareExtensions
     {
-        public static IApplicationBuilder UseOdinApiLinkMonitor(this IApplicationBuilder app)
+        public static IApplicationBuilder UseOdinApiLinkMonitor(this IApplicationBuilder app, Action<List<string>> options = null)
         {
-            return app.UseMiddleware<OdinApiLinkMonitorMiddleware>();
+            var lstStr = new List<string>();
+            if (options != null)
+                options(lstStr);
+            return app.UseMiddleware<OdinApiLinkMonitorMiddleware>(lstStr);
         }
 
         public static IApplicationBuilder UseOdinException(this IApplicationBuilder app)

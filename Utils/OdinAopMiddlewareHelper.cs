@@ -59,21 +59,15 @@ namespace OdinPlugs.OdinMvcCore.OdinMiddleware.Utils
             stopWatch.Stop();
             var elapseTime = stopWatch.ElapsedMilliseconds;
             Dictionary<long, Stack<OdinApiLinkModel>> linkMonitor = null;
-            if (ex == null)
-            {
-                // 生成结束链路
-                linkMonitor = odinLinkMonitor.ApiInvokerOverLinkMonitor(context, elapseTime);
-            }
-            else
-            {
-                // 生成结束链路
-                linkMonitor = odinLinkMonitor.ApiInvokerOverLinkMonitor(context, elapseTime, false);
-                System.Console.WriteLine(JsonConvert.SerializeObject(ex).ToString());
-            }
+            // 生成结束链路
+            linkMonitor = odinLinkMonitor.ApiInvokerOverLinkMonitor(context, elapseTime, ex == null);
             var linkMonitorId = Convert.ToInt64(context.Items["odinlinkId"]);
             System.Console.WriteLine(JsonConvert.SerializeObject(linkMonitor[linkMonitorId].Peek()).ToJsonFormatString());
             System.Console.WriteLine($"=============MiddlewareAfterAsync  OnActionExecuted  end=============");
-            await MiddlewareExceptionAsync(context, ex);
+            if (ex != null)
+            {
+                await MiddlewareExceptionAsync(context, ex);
+            }
         }
 
         public static void MiddlewareResponseCompleted()
@@ -85,6 +79,7 @@ namespace OdinPlugs.OdinMvcCore.OdinMiddleware.Utils
         public static async Task MiddlewareExceptionAsync(HttpContext context, Exception ex)
         {
             System.Console.WriteLine($"=============MiddlewareExceptionAsync    start=============");
+            System.Console.WriteLine(JsonConvert.SerializeObject(ex).ToJsonFormatString());
             System.Console.WriteLine($"=============MiddlewareExceptionAsync    end=============");
             await Task.CompletedTask;
         }

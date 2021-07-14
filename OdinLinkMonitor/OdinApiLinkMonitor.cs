@@ -81,9 +81,9 @@ namespace OdinPlugs.ApiLinkMonitor.OdinLinkMonitor
                         InvokerClassFullName = context.ServiceMethod.DeclaringType.FullName,
                         InvokerClassName = context.ServiceMethod.DeclaringType.Name,
                         InvokerMethodName = context.ServiceMethod.Name,
-                        InvokerMethodParams = context.ServiceMethod.GetParameters() != null && context.ServiceMethod.GetParameters().Length > 0 ?
-                        JsonConvert.SerializeObject(context.ServiceMethod.GetParameters().Select(p => p.Name).ToList()) :
-                        null,
+                        // InvokerMethodParams = context.ServiceMethod.GetParameters() != null && context.ServiceMethod.GetParameters().Length > 0 ?
+                        // JsonConvert.SerializeObject(context.ServiceMethod.GetParameters().Select(p => p.Name).ToList()) :
+                        // null,
                         LinkSort = stackTopele.LinkSort + 1,
                     };
                     stackLink.Push(linkModel);
@@ -137,17 +137,17 @@ namespace OdinPlugs.ApiLinkMonitor.OdinLinkMonitor
                         LinkPrevious = stackTopele.LinkNext,
                         InvokerReturnStatusEnum = invokerReturnStatusenum,
                         InvokerReturnStatusStr = invokerReturnStatusenum.ToString(),
-                        InvokerResult = result,
+                        // InvokerResult = result,
                         LinkNext = snowFlake.CreateSnowFlakeId(),
                         ElapsedTime = stopwatch.ElapsedMilliseconds,
                         InvokerClassFullName = context.ServiceMethod.DeclaringType?.FullName,
                         InvokerClassName = context.ServiceMethod.DeclaringType?.Name,
                         InvokerMethodName = context.ServiceMethod.Name,
-                        InvokerMethodParams = context.ServiceMethod.GetParameters().Length > 0
-                                    ?
-                                    JsonConvert.SerializeObject(context.ServiceMethod.GetParameters().Select(p => p.Name).ToList())
-                                    :
-                                    null,
+                        // InvokerMethodParams = context.ServiceMethod.GetParameters().Length > 0
+                        //             ?
+                        //             JsonConvert.SerializeObject(context.ServiceMethod.GetParameters().Select(p => p.Name).ToList())
+                        //             :
+                        //             null,
                         LinkSort = stackTopele.LinkSort + 1,
                     };
                     stackLink.Push(linkModel);
@@ -197,9 +197,9 @@ namespace OdinPlugs.ApiLinkMonitor.OdinLinkMonitor
                         LinkPrevious = stackTopele.LinkNext,
                         InvokerReturnStatusEnum = invokerReturnStatusenum,
                         InvokerReturnStatusStr = invokerReturnStatusenum.ToString(),
-                        InvokerResult = "result",
+                        // InvokerResult = "result",
                         ElapsedTime = elapsedTime,
-                        InvokerMethodParams = JsonConvert.SerializeObject(OdinRequestParamasHelper.GetRequestParams(context)),
+                        // InvokerMethodParams = JsonConvert.SerializeObject(OdinRequestParamasHelper.GetRequestParams(context)),
                         LinkSort = stackTopele.LinkSort + 1,
                     };
                     stackLink.Push(linkModel);
