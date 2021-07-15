@@ -52,7 +52,7 @@ namespace OdinPlugs.OdinMvcCore.OdinMiddleware.Utils
         /// <param name="originalBodyStream"></param>
         /// <param name="responseBody"></param>
         /// <returns></returns>
-        public static async void MiddlewareAfterAsync(HttpContext context, Exception ex)
+        public static async void MiddlewareAfterAsync(HttpContext context)
         {
             System.Console.WriteLine($"=============MiddlewareAfterAsync  OnActionExecuted  Start=============");
             var odinLinkMonitor = OdinInjectCore.GetService<IOdinApiLinkMonitor>();
@@ -60,14 +60,11 @@ namespace OdinPlugs.OdinMvcCore.OdinMiddleware.Utils
             var elapseTime = stopWatch.ElapsedMilliseconds;
             Dictionary<long, Stack<OdinApiLinkModel>> linkMonitor = null;
             // 生成结束链路
-            linkMonitor = odinLinkMonitor.ApiInvokerOverLinkMonitor(context, elapseTime, ex == null);
+            linkMonitor = odinLinkMonitor.ApiInvokerOverLinkMonitor(context, elapseTime);
             var linkMonitorId = Convert.ToInt64(context.Items["odinlinkId"]);
             System.Console.WriteLine(JsonConvert.SerializeObject(linkMonitor[linkMonitorId].Peek()).ToJsonFormatString());
             System.Console.WriteLine($"=============MiddlewareAfterAsync  OnActionExecuted  end=============");
-            if (ex != null)
-            {
-                await MiddlewareExceptionAsync(context, ex);
-            }
+            await Task.CompletedTask;
         }
 
         public static void MiddlewareResponseCompleted()
