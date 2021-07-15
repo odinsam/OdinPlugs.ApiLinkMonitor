@@ -1,13 +1,17 @@
+using System.Runtime.ExceptionServices;
+using System.Buffers;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 using OdinPlugs.ApiLinkMonitor.Utils;
+using OdinPlugs.OdinInject;
 using OdinPlugs.OdinMvcCore.OdinMiddleware.Utils;
 using OdinPlugs.OdinUtils.OdinExtensions.BasicExtensions.OdinObject;
 
@@ -24,7 +28,6 @@ namespace OdinPlugs.ApiLinkMonitor.OdinMiddleware
 
         public async Task Invoke(HttpContext context)
         {
-
             if (!OdinAopMiddlewarePathRegex.IsIgnorePath(context.Request.Path, LstStr))
             {
                 try
@@ -32,6 +35,8 @@ namespace OdinPlugs.ApiLinkMonitor.OdinMiddleware
                     System.Console.WriteLine("=========OdinExceptionMiddleware request start==========");
                     System.Console.WriteLine("=========OdinExceptionMiddleware request end==========");
                     await _next(context);
+                    System.Console.WriteLine("=========OdinExceptionMiddleware response start==========");
+                    System.Console.WriteLine("=========OdinExceptionMiddleware response end==========");
                 }
                 catch (System.Exception ex)
                 {
@@ -47,7 +52,6 @@ namespace OdinPlugs.ApiLinkMonitor.OdinMiddleware
                 finally
                 {
                     System.Console.WriteLine("=========OdinExceptionMiddleware finally Exception start==========");
-
                     System.Console.WriteLine("=========OdinExceptionMiddleware finally Exception end==========");
                 }
             }
@@ -57,12 +61,23 @@ namespace OdinPlugs.ApiLinkMonitor.OdinMiddleware
             }
         }
 
-        private async Task HandlerException(HttpContext httpContext, Exception ex)
+        private async Task HandlerException(HttpContext context, Exception ex)
         {
-            var errorResponse = new { Data = JsonConvert.SerializeObject(ex), Message = "OdinExceptionMiddleware HandlerException" };
-            httpContext.Response.StatusCode = 200;
-            httpContext.Response.ContentType = "application/json";
-            await httpContext.Response.WriteAsync(errorResponse.ToJson());
+            System.Console.WriteLine("=========HandlerException start==========");
+            var linkMonitorId = Convert.ToInt64(context.Items["odinlinkId"]);
+            var exceptionResult = new
+            {
+                SnowFlakeId = linkMonitorId.ToString(),
+                Data = ex,
+                StatusCode = "sys-error",
+                ErrorMessage = "系统异常，请联系管理员",
+                Message = "系统异常:[sys-error]"
+            };
+            // var errorResponse = new { Data = JsonConvert.SerializeObject(ex), Message = "OdinExceptionMiddleware HandlerException" };
+            context.Response.StatusCode = 200;
+            context.Response.ContentType = "application/json";
+            await context.Response.WriteAsync(exceptionResult.ToJson());
+            System.Console.WriteLine("=========HandlerException end==========");
         }
     }
 }
