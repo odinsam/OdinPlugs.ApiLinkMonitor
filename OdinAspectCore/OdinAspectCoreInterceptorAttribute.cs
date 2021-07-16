@@ -6,6 +6,7 @@ using AspectCore.DynamicProxy;
 using Newtonsoft.Json;
 using OdinPlugs.ApiLinkMonitor.OdinLinkMonitor.OdinLinkMonitorInterface;
 using OdinPlugs.OdinInject;
+using OdinPlugs.OdinInject.InjectCore;
 using OdinPlugs.OdinUtils.OdinExtensions.BasicExtensions.OdinString;
 
 namespace OdinPlugs.ApiLinkMonitor.OdinAspectCore.IOdinAspectCoreInterface

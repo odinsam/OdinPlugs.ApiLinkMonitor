@@ -10,6 +10,7 @@ using OdinPlugs.ApiLinkMonitor.Models.ApiLinkModels;
 using OdinPlugs.ApiLinkMonitor.Models.EnumLink;
 using OdinPlugs.ApiLinkMonitor.OdinLinkMonitor.OdinLinkMonitorInterface;
 using OdinPlugs.OdinInject;
+using OdinPlugs.OdinInject.InjectCore;
 using OdinPlugs.OdinUtils.OdinExtensions.BasicExtensions.OdinString;
 using OdinPlugs.OdinUtils.Utils.OdinHttp;
 using OdinPlugs.SnowFlake.SnowFlakePlugs.ISnowFlake;
