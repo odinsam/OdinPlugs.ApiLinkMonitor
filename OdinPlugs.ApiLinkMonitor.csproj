@@ -15,6 +15,7 @@
         <Version>$(OdinVersion)</Version>
         <RepositoryType>$(OdinRepositoryType)</RepositoryType>
         <PackageTags>$(OdinPackageTags)</PackageTags>
+        <IsPackable>true</IsPackable>
     </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="AspectCore.Core" Version="2.2.0" />
