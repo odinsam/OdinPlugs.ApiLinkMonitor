@@ -1,20 +1,25 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <Import Project="./common.props" />
     <PropertyGroup>
+        <Version>1.0.5</Version>
         <TargetFramework>net5.0</TargetFramework>
-        <GeneratePackageOnBuild>$(OdinGeneratePackageOnBuild)</GeneratePackageOnBuild>
-        <AssemblyName>$(OdinAssemblyName)</AssemblyName>
-        <RootNamespace>$(OdinCoreDemo)</RootNamespace>
-        <OutputType>$(OdinOutputType)</OutputType>
+        <AssemblyName>OdinPlugs.ApiLinkMonitor</AssemblyName>
+        <RootNamespace>OdinPlugs.ApiLinkMonitor</RootNamespace>
+        
         <PackageId>$(OdinPackageId)</PackageId>
         <Authors>$(OdinAuthors)</Authors>
         <Company>$(OdinCompany)</Company>
         <Copyright>$(OdinCopyright)</Copyright>
         <Product>$(OdinProduct)</Product>
         <Description>$(OdinDescription)</Description>
-        <Version>$(OdinVersion)</Version>
+        <RepositoryType>$(OdinRepositoryType)</RepositoryType>
         <RepositoryType>$(OdinRepositoryType)</RepositoryType>
         <PackageTags>$(OdinPackageTags)</PackageTags>
+        <Title>$(OdinAssemblyName)</Title>
+        <PackageProjectUrl>$(OdinGitUrl)/OdinPlugs.ApiLinkMonitor</PackageProjectUrl>
+        <RepositoryUrl>$(OdinGitUrl)/$(OdinAssemblyName)</RepositoryUrl>
+        <RepositoryBranch>master</RepositoryBranch>
+        <PackageIcon>icon.png</PackageIcon>
         <IsPackable>true</IsPackable>
     </PropertyGroup>
     <ItemGroup>
