@@ -1,4 +1,3 @@
-using AspectCore.DynamicProxy;
 using OdinPlugs.OdinInject.InjectInterface;
 
 namespace OdinPlugs.ApiLinkMonitor.OdinAspectCore.IOdinAspectCoreInterface

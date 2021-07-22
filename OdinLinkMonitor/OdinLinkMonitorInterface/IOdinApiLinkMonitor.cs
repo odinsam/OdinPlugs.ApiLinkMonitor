@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using AspectCore.DynamicProxy;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc.Filters;
 using OdinPlugs.ApiLinkMonitor.Models.ApiLinkModels;
 using OdinPlugs.OdinInject.InjectInterface;
 

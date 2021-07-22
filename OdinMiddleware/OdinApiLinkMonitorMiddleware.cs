@@ -1,9 +1,7 @@
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using OdinPlugs.ApiLinkMonitor.Utils;
 using OdinPlugs.OdinMvcCore.OdinMiddleware.Utils;
@@ -34,13 +32,21 @@ namespace OdinPlugs.ApiLinkMonitor.OdinMiddleware
                 var originalBodyStream = context.Response.Body;
                 using (var responseBody = new MemoryStream())
                 {
+#if DEBUG
                     System.Console.WriteLine("=========OdinApiLinkMonitorMiddleware  Request  start==========");
+#endif
                     OdinAopMiddlewareHelper.MiddlewareBefore(context);
+#if DEBUG
                     System.Console.WriteLine("=========OdinApiLinkMonitorMiddleware  Request  end==========");
+#endif
                     await _next(context);
+#if DEBUG
                     System.Console.WriteLine("=========OdinApiLinkMonitorMiddleware  Response  start==========");
+#endif
                     OdinAopMiddlewareHelper.MiddlewareAfterAsync(context);
+#if DEBUG
                     System.Console.WriteLine("=========OdinApiLinkMonitorMiddleware  Response  end==========");
+#endif
                 }
                 // context.Response.OnCompleted(() =>
                 // {

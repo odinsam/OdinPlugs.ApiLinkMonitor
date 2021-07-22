@@ -14,6 +14,7 @@ using OdinPlugs.OdinUtils.OdinExtensions.BasicExtensions.OdinString;
 using System.Collections.Generic;
 using OdinPlugs.ApiLinkMonitor.Models.ApiLinkModels;
 using OdinPlugs.OdinInject.InjectCore;
+using OdinPlugs.OdinUtils.OdinExtensions.BasicExtensions.OdinObject;
 
 namespace OdinPlugs.OdinMvcCore.OdinMiddleware.Utils
 {
@@ -28,7 +29,9 @@ namespace OdinPlugs.OdinMvcCore.OdinMiddleware.Utils
         /// <param name="apiInvokerModel"></param> 
         public static void MiddlewareBefore(HttpContext context)
         {
+#if DEBUG
             System.Console.WriteLine($"=============MiddlewareBefore  OnActionExecuting  start=============");
+#endif
             stopWatch = Stopwatch.StartNew();
             stopWatch.Restart();
             var odinLinkMonitor = OdinInjectCore.GetService<IOdinApiLinkMonitor>();
@@ -42,7 +45,9 @@ namespace OdinPlugs.OdinMvcCore.OdinMiddleware.Utils
             #region 保存link记录到mongodb--链路Start
 
             #endregion
+#if DEBUG
             System.Console.WriteLine($"=============MiddlewareBefore  OnActionExecuting  end=============");
+#endif
         }
 
         /// <summary>
@@ -55,7 +60,9 @@ namespace OdinPlugs.OdinMvcCore.OdinMiddleware.Utils
         /// <returns></returns>
         public static async void MiddlewareAfterAsync(HttpContext context)
         {
+#if DEBUG
             System.Console.WriteLine($"=============MiddlewareAfterAsync  OnActionExecuted  Start=============");
+#endif
             var odinLinkMonitor = OdinInjectCore.GetService<IOdinApiLinkMonitor>();
             stopWatch.Stop();
             var elapseTime = stopWatch.ElapsedMilliseconds;
@@ -63,22 +70,32 @@ namespace OdinPlugs.OdinMvcCore.OdinMiddleware.Utils
             // 生成结束链路
             linkMonitor = odinLinkMonitor.ApiInvokerOverLinkMonitor(context, elapseTime);
             var linkMonitorId = Convert.ToInt64(context.Items["odinlinkId"]);
+#if DEBUG
             System.Console.WriteLine(JsonConvert.SerializeObject(linkMonitor[linkMonitorId].Peek()).ToJsonFormatString());
             System.Console.WriteLine($"=============MiddlewareAfterAsync  OnActionExecuted  end=============");
+#endif
             await Task.CompletedTask;
         }
 
         public static void MiddlewareResponseCompleted()
         {
+#if DEBUG
             System.Console.WriteLine($"=============MiddlewareResponseCompleted    start=============");
+#endif
+#if DEBUG
             System.Console.WriteLine($"=============MiddlewareResponseCompleted    end=============");
+#endif
         }
 
         public static async Task MiddlewareExceptionAsync(HttpContext context, Exception ex)
         {
+#if DEBUG
             System.Console.WriteLine($"=============MiddlewareExceptionAsync    start=============");
-            System.Console.WriteLine(JsonConvert.SerializeObject(ex).ToJsonFormatString());
+#endif
+            System.Console.WriteLine(JsonConvert.SerializeObject(ex).ToJson());
+#if DEBUG
             System.Console.WriteLine($"=============MiddlewareExceptionAsync    end=============");
+#endif
             await Task.CompletedTask;
         }
     }

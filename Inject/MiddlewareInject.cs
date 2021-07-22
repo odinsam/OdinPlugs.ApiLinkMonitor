@@ -1,5 +1,4 @@
 using Microsoft.Extensions.DependencyInjection;
-using OdinPlugs.ApiLinkMonitor.OdinAspectCore;
 using OdinPlugs.ApiLinkMonitor.OdinAspectCore.IOdinAspectCoreInterface;
 using OdinPlugs.ApiLinkMonitor.OdinLinkMonitor.OdinLinkMonitorInterface;
 
