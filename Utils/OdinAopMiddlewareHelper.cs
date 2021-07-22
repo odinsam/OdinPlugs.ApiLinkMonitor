@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using OdinPlugs.ApiLinkMonitor.Models.ApiLinkModels;
 using OdinPlugs.OdinInject.InjectCore;
 using OdinPlugs.OdinUtils.OdinExtensions.BasicExtensions.OdinObject;
+using OdinPlugs.OdinInject.InjectPlugs.OdinMongoDbInject;
 
 namespace OdinPlugs.OdinMvcCore.OdinMiddleware.Utils
 {
@@ -19,6 +20,7 @@ namespace OdinPlugs.OdinMvcCore.OdinMiddleware.Utils
     public class OdinAopMiddlewareHelper
     {
         private static Stopwatch stopWatch;
+
 
         /// <summary>
         /// 中间件请求前，尚未进入action方法
@@ -38,11 +40,10 @@ namespace OdinPlugs.OdinMvcCore.OdinMiddleware.Utils
             var linkMonitor = odinLinkMonitor.CreateOdinLinkMonitor(snowFlakeId);
             context.Items.Add("odinlinkId", snowFlakeId);
             context.Items.Add("odinlink", linkMonitor);
+#if DEBUG
             System.Console.WriteLine(JsonConvert.SerializeObject(linkMonitor[snowFlakeId].Peek()).ToJsonFormatString());
+#endif
 
-            #region 保存link记录到mongodb--链路Start
-
-            #endregion
 #if DEBUG
             System.Console.WriteLine($"=============MiddlewareBefore  OnActionExecuting  end=============");
 #endif
@@ -68,6 +69,10 @@ namespace OdinPlugs.OdinMvcCore.OdinMiddleware.Utils
             // 生成结束链路
             linkMonitor = odinLinkMonitor.ApiInvokerOverLinkMonitor(context, elapseTime);
             var linkMonitorId = Convert.ToInt64(context.Items["odinlinkId"]);
+
+            #region 保存link记录到mongodb--链路Over
+
+            #endregion
 #if DEBUG
             System.Console.WriteLine(JsonConvert.SerializeObject(linkMonitor[linkMonitorId].Peek()).ToJsonFormatString());
             System.Console.WriteLine($"=============MiddlewareAfterAsync  OnActionExecuted  end=============");

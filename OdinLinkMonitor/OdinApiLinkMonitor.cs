@@ -8,6 +8,7 @@ using OdinPlugs.ApiLinkMonitor.Models.ApiLinkModels;
 using OdinPlugs.ApiLinkMonitor.Models.EnumLink;
 using OdinPlugs.ApiLinkMonitor.OdinLinkMonitor.OdinLinkMonitorInterface;
 using OdinPlugs.OdinInject.InjectCore;
+using OdinPlugs.OdinInject.InjectPlugs.OdinMongoDbInject;
 using OdinPlugs.OdinUtils.OdinExtensions.BasicExtensions.OdinString;
 using OdinPlugs.SnowFlake.SnowFlakePlugs.ISnowFlake;
 
@@ -17,6 +18,7 @@ namespace OdinPlugs.ApiLinkMonitor.OdinLinkMonitor
     {
         Dictionary<long, Stack<OdinApiLinkModel>> linksDic;
         static IOdinSnowFlake snowFlake = OdinInjectCore.GetService<IOdinSnowFlake>();
+        IOdinMongo mongoHelper = OdinInjectCore.GetService<IOdinMongo>();
 
         /// <summary>
         /// 创建链路监控对象
@@ -46,6 +48,9 @@ namespace OdinPlugs.ApiLinkMonitor.OdinLinkMonitor
             };
             stackApiLink.Push(linkModel);
             linksDic.Add(linkSnowFlakeId, stackApiLink);
+            #region 保存link记录到mongodb--链路Start
+            mongoHelper.AddModel<OdinApiLinkModel>("ApiLink_Monitor", linkModel);
+            #endregion
             return linksDic;
         }
 
@@ -84,6 +89,9 @@ namespace OdinPlugs.ApiLinkMonitor.OdinLinkMonitor
                         LinkSort = stackTopele.LinkSort + 1,
                     };
                     stackLink.Push(linkModel);
+                    #region 保存link记录到mongodb--链路Invoker
+                    mongoHelper.AddModel<OdinApiLinkModel>("ApiLink_Monitor", linkModel);
+                    #endregion
                     return linksDic;
                 }
                 else
@@ -147,6 +155,9 @@ namespace OdinPlugs.ApiLinkMonitor.OdinLinkMonitor
                         LinkSort = stackTopele.LinkSort + 1,
                     };
                     stackLink.Push(linkModel);
+                    #region 保存link记录到mongodb--链路ToEndReturn
+                    mongoHelper.AddModel<OdinApiLinkModel>("ApiLink_Monitor", linkModel);
+                    #endregion
                     return linksDic;
                 }
                 else
@@ -199,6 +210,9 @@ namespace OdinPlugs.ApiLinkMonitor.OdinLinkMonitor
                         LinkSort = stackTopele.LinkSort + 1,
                     };
                     stackLink.Push(linkModel);
+                    #region 保存link记录到mongodb--链路Over
+                    mongoHelper.AddModel<OdinApiLinkModel>("ApiLink_Monitor", linkModel);
+                    #endregion
                     return linksDic;
                 }
                 else

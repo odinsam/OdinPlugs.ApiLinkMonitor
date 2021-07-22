@@ -11,12 +11,12 @@ namespace OdinPlugs.ApiLinkMonitor.OdinAspectCore.IOdinAspectCoreInterface
 {
     public class OdinAspectCoreInterceptorAttribute : AbstractInterceptorAttribute, IOdinAspectCoreInterceptorAttribute
     {
+        bool isSuccess = true;
         Stopwatch stopWatch;
         public async override Task Invoke(AspectContext context, AspectDelegate next)
         {
             stopWatch = Stopwatch.StartNew();
             stopWatch.Restart();
-            bool isSuccess = true;
             try
             {
 #if DEBUG
