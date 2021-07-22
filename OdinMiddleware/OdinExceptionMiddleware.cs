@@ -49,6 +49,9 @@ namespace OdinPlugs.ApiLinkMonitor.OdinMiddleware
                         System.Console.WriteLine("触发了异常, 但是Response HasStarted!");
                         throw;
                     }
+#if DEBUG
+                    System.Console.WriteLine(ex.ToJson(enumStringFormat.Json));
+#endif
                     await HandlerException(context, ex);
 #if DEBUG
                     System.Console.WriteLine("=========OdinExceptionMiddleware catch Exception end==========");
