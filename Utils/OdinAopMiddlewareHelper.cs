@@ -1,13 +1,8 @@
-using System.Text;
 using System;
 using System.Diagnostics;
-using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using OdinPlugs.OdinInject;
 using OdinPlugs.ApiLinkMonitor.OdinLinkMonitor.OdinLinkMonitorInterface;
 using OdinPlugs.SnowFlake.SnowFlakePlugs.ISnowFlake;
 using OdinPlugs.OdinUtils.OdinExtensions.BasicExtensions.OdinString;
@@ -18,6 +13,9 @@ using OdinPlugs.OdinUtils.OdinExtensions.BasicExtensions.OdinObject;
 
 namespace OdinPlugs.OdinMvcCore.OdinMiddleware.Utils
 {
+    /// <summary>
+    /// 链路监控基础操作类
+    /// </summary>
     public class OdinAopMiddlewareHelper
     {
         private static Stopwatch stopWatch;

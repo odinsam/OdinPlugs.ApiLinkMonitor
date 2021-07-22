@@ -7,6 +7,9 @@ using OdinPlugs.OdinUtils.OdinJson.ContractResolver;
 
 namespace OdinPlugs.ApiLinkMonitor.Models.ApiLinkModels
 {
+    /// <summary>
+    /// 链路模型对象
+    /// </summary>
     public class OdinApiLinkModel
     {
         /// <summary>

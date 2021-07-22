@@ -5,6 +5,9 @@ using OdinPlugs.ApiLinkMonitor.OdinMiddleware;
 
 namespace OdinPlugs.ApiLinkMonitor.MiddlewareExtensions
 {
+    /// <summary>
+    /// 全局异常中间件
+    /// </summary>
     public static class OdinExceptionMiddlewareExtensions
     {
         public static IApplicationBuilder UseOdinException(this IApplicationBuilder app, Action<List<string>> options = null)

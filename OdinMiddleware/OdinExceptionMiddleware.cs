@@ -7,6 +7,9 @@ using OdinPlugs.OdinUtils.OdinExtensions.BasicExtensions.OdinObject;
 
 namespace OdinPlugs.ApiLinkMonitor.OdinMiddleware
 {
+    /// <summary>
+    /// 全局异常链路中间件 
+    /// </summary>
     public class OdinExceptionMiddleware : OdinMiddleware
     {
         private readonly RequestDelegate _next;

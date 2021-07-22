@@ -84,7 +84,6 @@ namespace OdinPlugs.ApiLinkMonitor.OdinLinkMonitor
                         LinkSort = stackTopele.LinkSort + 1,
                     };
                     stackLink.Push(linkModel);
-                    // linksDic[odinlinkId] = stackLink;
                     return linksDic;
                 }
                 else
@@ -167,10 +166,10 @@ namespace OdinPlugs.ApiLinkMonitor.OdinLinkMonitor
         /// <summary>
         /// 创建链路监控结束对象
         /// </summary>
-        /// <param name="context">ActionExecutedContext上下文</param>
-        /// <param name="elapsedTime">时间监控对象</param>
+        /// <param name="context">HttpContext 上下文</param>
+        /// <param name="elapsedTime">链路耗时</param>
         /// <param name="isSuccess">链路中的方法是否成功</param>
-        /// <returns>可以存储链路记录的容器对象</returns>
+        /// <returns>key: 雪花Id value: 当前链路的栈</returns>
         /// <exception cref="Exception"></exception>
         public Dictionary<long, Stack<OdinApiLinkModel>> ApiInvokerOverLinkMonitor(HttpContext context, long elapsedTime, bool isSuccess = true)
         {

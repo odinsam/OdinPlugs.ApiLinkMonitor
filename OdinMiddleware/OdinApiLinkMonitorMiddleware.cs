@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -8,6 +7,9 @@ using OdinPlugs.OdinMvcCore.OdinMiddleware.Utils;
 
 namespace OdinPlugs.ApiLinkMonitor.OdinMiddleware
 {
+    /// <summary>
+    /// 全局链路监控中间件
+    /// </summary>
     public class OdinApiLinkMonitorMiddleware : OdinMiddleware
     {
         private readonly RequestDelegate _next;

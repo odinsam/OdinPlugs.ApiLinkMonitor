@@ -60,7 +60,9 @@ namespace OdinPlugs.ApiLinkMonitor.OdinAspectCore.IOdinAspectCoreInterface
                 // stopWatch.Stop();
                 var odinLinkMonitor = OdinInjectCore.GetService<IOdinApiLinkMonitor>();
                 var linkMonitorId = Convert.ToInt64(context.GetHttpContext().Items["odinlinkId"]);
+#if DEBUG
                 Console.WriteLine($"isSuccess:{isSuccess}");
+#endif
                 var linkMonitor = odinLinkMonitor.ApiInvokerToEndLinkMonitor(context, isSuccess, stopWatch);
                 System.Console.WriteLine(JsonConvert.SerializeObject(linkMonitor[linkMonitorId].Peek()).ToJsonFormatString());
 #if DEBUG
