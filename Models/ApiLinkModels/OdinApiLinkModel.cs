@@ -1,3 +1,4 @@
+using System.Reflection.Metadata;
 using System;
 using System.Diagnostics;
 using System.Security.AccessControl;
@@ -18,6 +19,13 @@ namespace OdinPlugs.ApiLinkMonitor.Models.ApiLinkModels
         /// <value></value>
         [JsonConverter(typeof(JsonConverterLong))]
         public long Id { get; set; }
+
+        /// <summary>
+        /// 当前链路的Id
+        /// </summary>
+        /// <value></value>
+        [JsonConverter(typeof(JsonConverterLong))]
+        public long CurrentId { get; set; }
 
         /// <summary>
         /// 链路状态 

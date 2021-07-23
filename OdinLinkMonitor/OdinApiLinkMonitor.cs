@@ -41,6 +41,7 @@ namespace OdinPlugs.ApiLinkMonitor.OdinLinkMonitor
             var linkModel = new OdinApiLinkModel
             {
                 Id = linkSnowFlakeId,
+                CurrentId = snowFlake.CreateSnowFlakeId(),
                 LinkStatusEnum = EnumLinkStatus.Start,
                 LinkStatusStr = EnumLinkStatus.Start.ToString(),
                 LinkNext = snowFlake.CreateSnowFlakeId(),
@@ -75,6 +76,7 @@ namespace OdinPlugs.ApiLinkMonitor.OdinLinkMonitor
                     var linkModel = new OdinApiLinkModel
                     {
                         Id = odinlinkId,
+                        CurrentId = snowFlake.CreateSnowFlakeId(),
                         LinkStatusEnum = EnumLinkStatus.Invoker,
                         LinkStatusStr = EnumLinkStatus.Invoker.ToString(),
                         // 在栈中获取上次的链路节点的next值，作为当前的节点的前一次的值 
@@ -135,6 +137,7 @@ namespace OdinPlugs.ApiLinkMonitor.OdinLinkMonitor
                     var linkModel = new OdinApiLinkModel
                     {
                         Id = odinlinkId,
+                        CurrentId = snowFlake.CreateSnowFlakeId(),
                         LinkStatusEnum = EnumLinkStatus.ToEndReturn,
                         LinkStatusStr = EnumLinkStatus.ToEndReturn.ToString(),
                         // 在栈中获取上次的链路节点的next值，作为当前的节点的前一次的值 
@@ -198,6 +201,7 @@ namespace OdinPlugs.ApiLinkMonitor.OdinLinkMonitor
                     var linkModel = new OdinApiLinkModel
                     {
                         Id = odinlinkId,
+                        CurrentId = snowFlake.CreateSnowFlakeId(),
                         LinkStatusEnum = EnumLinkStatus.Over,
                         LinkStatusStr = EnumLinkStatus.Over.ToString(),
                         // 在栈中获取上次的链路节点的next值，作为当前的节点的前一次的值 
