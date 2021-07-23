@@ -213,4 +213,4 @@ swagger 调用返回信息如下:
 }
 ```
 
-通过相同的雪花 Id 最后会清晰的分析出整个调用过程中的过程，并且如果能够结合 OdinPlugs 框架,可以监控到 controller 中 api 的调用记录，包括入参、时间、返回信息等会更加详细。
+通过相同的雪花 Id 最后会清晰的分析出整个调用过程中的过程，并且如果能够结合 [OdinPlugs](https://github.com/odinsam/OdinPlugs.OdinPlugs) 框架,可以监控到 controller 中 api 的调用记录，包括入参、时间、返回信息等会更加详细。

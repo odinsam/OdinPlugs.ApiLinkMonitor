@@ -1,5 +1,26 @@
-# Changelog
-
-All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
-
 ## 1.1.0 (2021-07-23)
+
+* chore(release): 1.1.0 ([983fb2d](https://github.com/odinsam/odinplugs.ApiLinkMonitor/commit/983fb2d))
+* ✨ feat(*): 新增属性 CurrentId 记录当前链路的Id ([e5f3d4f](https://github.com/odinsam/odinplugs.ApiLinkMonitor/commit/e5f3d4f))
+* 🌈 style(*): add commit ([285adf4](https://github.com/odinsam/odinplugs.ApiLinkMonitor/commit/285adf4))
+* 🌈 style(csproj): 修改csproj ([f51db36](https://github.com/odinsam/odinplugs.ApiLinkMonitor/commit/f51db36))
+* 🐞 fix(*): 链路监控优化 ([fc21e72](https://github.com/odinsam/odinplugs.ApiLinkMonitor/commit/fc21e72))
+* 🐞 fix(*): 添加 if debug, 去除无用的命名空间 ([90d512d](https://github.com/odinsam/odinplugs.ApiLinkMonitor/commit/90d512d))
+* 🐞 fix(*): 完善链路监控模块 ([50abdc5](https://github.com/odinsam/odinplugs.ApiLinkMonitor/commit/50abdc5))
+* 📃 docs(*): 添加 git 徽章 ([18640ab](https://github.com/odinsam/odinplugs.ApiLinkMonitor/commit/18640ab))
+* 📃 docs(*): 修改 csproj ([c689547](https://github.com/odinsam/odinplugs.ApiLinkMonitor/commit/c689547))
+* 📃 docs(*): readme ([c24bd5f](https://github.com/odinsam/odinplugs.ApiLinkMonitor/commit/c24bd5f))
+* fix(修复 链路监控中间件和 全局异常处理中间件): 🐞 ([8861b1f](https://github.com/odinsam/odinplugs.ApiLinkMonitor/commit/8861b1f))
+* Initial commit ([816d2c8](https://github.com/odinsam/odinplugs.ApiLinkMonitor/commit/816d2c8))
+* no message ([a221964](https://github.com/odinsam/odinplugs.ApiLinkMonitor/commit/a221964))
+* no message ([0b82d1d](https://github.com/odinsam/odinplugs.ApiLinkMonitor/commit/0b82d1d))
+* no message ([90099a6](https://github.com/odinsam/odinplugs.ApiLinkMonitor/commit/90099a6))
+* no message ([4a54d47](https://github.com/odinsam/odinplugs.ApiLinkMonitor/commit/4a54d47))
+* no message ([67f5526](https://github.com/odinsam/odinplugs.ApiLinkMonitor/commit/67f5526))
+* fix(*): 🐞 完善链路监控 ([4bd6e2f](https://github.com/odinsam/odinplugs.ApiLinkMonitor/commit/4bd6e2f))
+* fix(*): 🐞 增加debug exception 的输出 ([4ad3f48](https://github.com/odinsam/odinplugs.ApiLinkMonitor/commit/4ad3f48))
+* fix(ApiLinkMonitor): 🐞 添加swagger过滤 ([1664e98](https://github.com/odinsam/odinplugs.ApiLinkMonitor/commit/1664e98))
+* feat(apiLinkMonitor): ✨ api链路监控中间件 ([6d721cc](https://github.com/odinsam/odinplugs.ApiLinkMonitor/commit/6d721cc))
+
+
+
